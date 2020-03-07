@@ -9,6 +9,6 @@ namespace AioiLight.DictionaryMate.IME
         string Output { get; set; }
         Encoding Encoding { get; }
         void Convert(JsonFormat jsonFormat);
-        string SpeechToString(Speech speech);
+        string SpeechToString(Speech? speech);
     }
 }
