@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 
 namespace AioiLight.DictionaryMate.IME
 {
     internal class GoogleIME : IConvertible
     {
-        public string Output { get; set; }
         public Encoding Encoding
         {
             get
@@ -15,13 +12,16 @@ namespace AioiLight.DictionaryMate.IME
             }
         }
 
-        public void Convert(JsonFormat jsonFormat)
+        public string Convert(JsonFormat jsonFormat)
         {
             var sb = new StringBuilder();
             foreach (var item in jsonFormat.Dictionaries)
             {
-                sb.Append
+                sb.Append(
+                    $"{item.Pronounce}\t{item.Word}\t{SpeechToString(item.Speech)}\t{item.Comment}\r\n"
+                    );
             }
+            return sb.ToString();
         }
 
         public string SpeechToString(Speech? speech)
