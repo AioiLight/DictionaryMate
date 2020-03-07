@@ -15,7 +15,8 @@ namespace AioiLight.DictionaryMate
 
         static void Generate(CommandOptions options)
         {
-
+            var input = options.Input;
+            var output = options.Output;
         }
 
         static void Error(IEnumerable<Error> err)
