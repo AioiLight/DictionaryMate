@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Collections.Generic;
+using System.Text;
 
 namespace AioiLight.DictionaryMate.IME
 {
@@ -12,10 +13,10 @@ namespace AioiLight.DictionaryMate.IME
             }
         }
 
-        public string Convert(JsonFormat jsonFormat)
+        public string Convert(List<Dictionary> jsonDic)
         {
             var sb = new StringBuilder();
-            foreach (var item in jsonFormat.Dictionaries)
+            foreach (var item in jsonDic)
             {
                 sb.Append(
                     $"{item.Pronounce}\t{item.Word}\t{SpeechToString(item.Speech)}\t{item.Comment}\r\n"

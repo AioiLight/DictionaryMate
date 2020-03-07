@@ -7,7 +7,7 @@ namespace AioiLight.DictionaryMate.IME
     public interface IConvertible
     {
         Encoding Encoding { get; }
-        string Convert(JsonFormat jsonFormat);
+        string Convert(List<Dictionary> jsonDic);
         string SpeechToString(Speech? speech);
     }
 }

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DictionaryMate": {
+      "commandName": "Project",
+      "commandLineArgs": "--input test.json"
+    }
+  }
+}
