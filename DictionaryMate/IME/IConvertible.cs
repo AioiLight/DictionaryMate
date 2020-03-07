@@ -7,6 +7,6 @@ namespace AioiLight.DictionaryMate.IME
     public interface IConvertible
     {
         string Output { get; set; }
-        void Convert();
+        void Convert(JsonFormat jsonFormat);
     }
 }

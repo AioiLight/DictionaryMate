@@ -70,4 +70,9 @@ namespace AioiLight.DictionaryMate
         /// </summary>
         Emoji
     }
+
+    public class JsonFormat
+    {
+        public List<Dictionary> Dictionaries { get; set; }
+    }
 }
