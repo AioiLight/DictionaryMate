@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using CommandLine;
 
 namespace AioiLight.DictionaryMate
 {
@@ -6,7 +8,19 @@ namespace AioiLight.DictionaryMate
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Parser.Default.ParseArguments<CommandOptions>(args)
+                .WithParsed(Generate)
+                .WithNotParsed(Error);
+        }
+
+        static void Generate(CommandOptions options)
+        {
+
+        }
+
+        static void Error(IEnumerable<Error> err)
+        {
+
         }
     }
 }
