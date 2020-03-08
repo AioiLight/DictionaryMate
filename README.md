@@ -45,6 +45,8 @@ JSON フォーマットのファイルからATOK、Microsoft IME、Google 日本
 
 ## 品詞一覧
 
+| 名前 | 品詞 |
+| ---- | ---- |
 | noun | 名詞 |
 | proper | 固有名詞 |
 | family | 姓 |
