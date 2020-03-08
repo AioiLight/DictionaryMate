@@ -46,6 +46,7 @@ namespace AioiLight.DictionaryMate.IME
                 : (speech.Value switch
                 {
                     Speech.Noun => "名詞",
+                    Speech.Proper => "固有一般	",
                     Speech.Family => "固有人姓",
                     Speech.Name => "固有人名",
                     Speech.Person => "固有人他",

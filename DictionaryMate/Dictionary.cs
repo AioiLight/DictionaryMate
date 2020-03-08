@@ -42,6 +42,10 @@ namespace AioiLight.DictionaryMate
         /// </summary>
         Noun,
         /// <summary>
+        /// 固有名詞
+        /// </summary>
+        Proper,
+        /// <summary>
         /// 姓
         /// </summary>
         Family,
