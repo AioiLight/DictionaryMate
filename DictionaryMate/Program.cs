@@ -1,24 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using CommandLine;
-using Newtonsoft.Json;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Linq;
+using CommandLine;
+using Newtonsoft.Json;
 
 namespace AioiLight.DictionaryMate
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Parser.Default.ParseArguments<CommandOptions>(args)
                 .WithParsed(Generate)
                 .WithNotParsed(Error);
         }
 
-        static void Generate(CommandOptions options)
+        private static void Generate(CommandOptions options)
         {
             var file = File.ReadAllText(Path.GetFullPath(options.Input), Encoding.UTF8);
             var json = JsonConvert.DeserializeObject<List<Dictionary>>(file);
@@ -44,14 +44,14 @@ namespace AioiLight.DictionaryMate
             }
         }
 
-        static void Error(IEnumerable<Error> err)
+        private static void Error(IEnumerable<Error> err)
         {
-
         }
 
         private static IME.IConvertible GetConverterFromString(string ime)
         {
-            return ime switch {
+            return ime switch
+            {
                 "atok" => new IME.ATOK(),
                 "msime" => new IME.MSIME(),
                 "googleime" => new IME.GoogleIME(),

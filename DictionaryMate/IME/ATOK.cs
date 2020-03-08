@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using AioiLight.DictionaryMate.IME;
 
 namespace AioiLight.DictionaryMate.IME
 {
@@ -19,7 +17,7 @@ namespace AioiLight.DictionaryMate.IME
         public string Convert(List<Dictionary> jsonDic)
         {
             var sb = new StringBuilder();
-            
+
             // ヘッダー
             sb.Append("!!ATOK_TANGO_TEXT_HEADER_1\r\n");
 
@@ -51,7 +49,6 @@ namespace AioiLight.DictionaryMate.IME
                         );
                 }
             }
-
 
             return sb.ToString();
         }
