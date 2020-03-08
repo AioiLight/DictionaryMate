@@ -9,7 +9,7 @@ namespace AioiLight.DictionaryMate.IME
         {
             get
             {
-                return Encoding.Unicode;
+                return Encoding.UTF8
             }
         }
 
