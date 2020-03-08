@@ -37,6 +37,7 @@ namespace AioiLight.DictionaryMate.IME
                 {
                     foreach (var cmnt in item.Comments)
                     {
+                        cmnt.Replace ??= new string[] { };
                         var replace = string.Join('\t', cmnt.Replace.Take(5));
                         sb.Append(
                             $"{item.Pronounce}\t{item.Word}\t{SpeechToString(item.Speech)}\t{cmnt.Comment}\t{GetAutoReplace(cmnt.AutoReplace)}\t{replace}\r\n"
