@@ -52,6 +52,7 @@ namespace AioiLight.DictionaryMate
         private static IME.IConvertible GetConverterFromString(string ime)
         {
             return ime switch {
+                "atok" => new IME.ATOK(),
                 "googleime" => new IME.GoogleIME(),
                 _ => null
             };
