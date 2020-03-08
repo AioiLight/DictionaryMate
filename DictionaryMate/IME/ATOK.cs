@@ -30,7 +30,7 @@ namespace AioiLight.DictionaryMate.IME
                 {
                     var replace = string.Join('\t', item.Replace.Skip(item.Replace.Length - i).Take(5));
                     sb.Append(
-                        $"{item.Pronounce}\t{item.Word}\t{SpeechToString(item.Speech)}\t{item.Comment}\t{replace}\r\n"
+                        $"{item.Pronounce}\t{item.Word}\t{SpeechToString(item.Speech)}\t{item.Comment}\t{GetAutoReplace(item.AutoReplace)}\t{replace}\r\n"
                         );
                 }
             }
@@ -56,6 +56,18 @@ namespace AioiLight.DictionaryMate.IME
                     Speech.Emoji => "顔文字",
                     _ => "名詞",
                 });
+        }
+
+        private string GetAutoReplace(bool? autoReplace)
+        {
+            if (!autoReplace.HasValue)
+            {
+                return "しない";
+            }
+            else
+            {
+                return autoReplace.Value ? "する" : "しない";
+            }
         }
     }
 }
