@@ -47,7 +47,14 @@ namespace AioiLight.DictionaryMate.IME
 
         private string GetComment(Dictionary dictionary)
         {
-            return dictionary.Comments.Length > 0 ? dictionary.Comments.First().Comment : "";
+            if (dictionary.Comments.Length > 0)
+            {
+                return dictionary.Comments.First().Comment ?? "";
+            }
+            else
+            {
+                return "";
+            }
         }
     }
 }
