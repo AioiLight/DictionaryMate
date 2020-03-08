@@ -53,6 +53,7 @@ namespace AioiLight.DictionaryMate
         {
             return ime switch {
                 "atok" => new IME.ATOK(),
+                "msime" => new IME.MSIME(),
                 "googleime" => new IME.GoogleIME(),
                 _ => null
             };

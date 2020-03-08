@@ -1,0 +1,51 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace AioiLight.DictionaryMate.IME
+{
+    internal class MSIME : IConvertible
+    {
+        public Encoding Encoding
+        {
+            get
+            {
+                return Encoding.Unicode;
+            }
+        }
+
+        public string Convert(List<Dictionary> jsonDic)
+        {
+            var sb = new StringBuilder();
+
+            // ヘッダー
+            sb.Append("!Microsoft IME Dictionary Tool\r\n");
+
+            foreach (var item in jsonDic)
+            {
+                sb.Append(
+                    $"{item.Pronounce}\t{item.Word}\t{SpeechToString(item.Speech)}\t{item.Comment}\r\n"
+                    );
+            }
+            return sb.ToString();
+        }
+
+        public string SpeechToString(Speech? speech)
+        {
+            return !speech.HasValue
+                ? "名詞"
+                : (speech.Value switch
+                {
+                    Speech.Noun => "名詞",
+                    Speech.Family => "姓",
+                    Speech.Name => "名",
+                    Speech.Person => "人名",
+                    Speech.Place => "地名",
+                    Speech.Org => "固有名詞",
+                    Speech.Short => "短縮よみ",
+                    Speech.Emoji => "顔文字",
+                    _ => "名詞",
+                });
+        }
+    }
+}
