@@ -19,6 +19,13 @@ namespace AioiLight.DictionaryMate.IME
             var sb = new StringBuilder();
             foreach (var item in jsonDic)
             {
+                // 読み、単語が存在しなければ無視
+                if (string.IsNullOrEmpty(item.Pronounce)
+                    || string.IsNullOrEmpty(item.Word))
+                {
+                    continue;
+                }
+
                 sb.Append(
                     $"{item.Pronounce}\t{item.Word}\t{SpeechToString(item.Speech)}\t{GetComment(item)}\r\n"
                     );

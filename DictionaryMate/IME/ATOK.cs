@@ -25,11 +25,28 @@ namespace AioiLight.DictionaryMate.IME
 
             foreach (var item in jsonDic)
             {
-                foreach (var cmnt in item.Comments)
+                // 読み、単語が存在しなければ無視
+                if (string.IsNullOrEmpty(item.Pronounce)
+                    || string.IsNullOrEmpty(item.Word))
                 {
-                    var replace = string.Join('\t', cmnt.Replace.Take(5));
+                    continue;
+                }
+
+                // コメントが存在するならあそれに沿ってやる
+                if (item.Comments.Count() > 0)
+                {
+                    foreach (var cmnt in item.Comments)
+                    {
+                        var replace = string.Join('\t', cmnt.Replace.Take(5));
+                        sb.Append(
+                            $"{item.Pronounce}\t{item.Word}\t{SpeechToString(item.Speech)}\t{cmnt.Comment}\t{GetAutoReplace(cmnt.AutoReplace)}\t{replace}\r\n"
+                            );
+                    }
+                }
+                else
+                {
                     sb.Append(
-                        $"{item.Pronounce}\t{item.Word}\t{SpeechToString(item.Speech)}\t{cmnt.Comment}\t{GetAutoReplace(cmnt.AutoReplace)}\t{replace}\r\n"
+                        $"{item.Pronounce}\t{item.Word}\t{SpeechToString(item.Speech)}\r\n"
                         );
                 }
             }
