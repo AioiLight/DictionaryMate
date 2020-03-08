@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace AioiLight.DictionaryMate.IME
@@ -19,7 +20,7 @@ namespace AioiLight.DictionaryMate.IME
             foreach (var item in jsonDic)
             {
                 sb.Append(
-                    $"{item.Pronounce}\t{item.Word}\t{SpeechToString(item.Speech)}\t{item.Comment}\r\n"
+                    $"{item.Pronounce}\t{item.Word}\t{SpeechToString(item.Speech)}\t{GetComment(item)}\r\n"
                     );
             }
             return sb.ToString();
@@ -42,6 +43,11 @@ namespace AioiLight.DictionaryMate.IME
                     Speech.Emoji => "顔文字",
                     _ => "名詞",
                 });
+        }
+
+        private string GetComment(Dictionary dictionary)
+        {
+            return dictionary.Comments.Length > 0 ? dictionary.Comments.First().Comment : "";
         }
     }
 }

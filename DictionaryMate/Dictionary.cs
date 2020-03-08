@@ -21,6 +21,14 @@ namespace AioiLight.DictionaryMate
         /// <summary>
         /// コメント
         /// </summary>
+        public Comments[] Comments { get; set; }
+    }
+
+    public class Comments
+    {
+        /// <summary>
+        /// コメント
+        /// </summary>
         public string Comment { get; set; }
         /// <summary>
         /// 自動置換

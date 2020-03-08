@@ -23,17 +23,13 @@ namespace AioiLight.DictionaryMate.IME
             // ヘッダー
             sb.Append("!!ATOK_TANGO_TEXT_HEADER_1\r\n");
 
-            // これがないと置換候補を6つ以上登録できない
-            sb.Append("!!読み範囲;(読みの先頭) → (読みの最終)\r\n");
-
             foreach (var item in jsonDic)
             {
-                // 置換候補が6つ以上あれば、複数同じ単語で登録する必要がある
-                for (var i = item.Replace.Length; 0 < i ; i -= 5)
+                foreach (var cmnt in item.Comments)
                 {
-                    var replace = string.Join('\t', item.Replace.Skip(item.Replace.Length - i).Take(5));
+                    var replace = string.Join('\t', cmnt.Replace.Take(5));
                     sb.Append(
-                        $"{item.Pronounce}\t{item.Word}\t{SpeechToString(item.Speech)}\t{item.Comment}\t{GetAutoReplace(item.AutoReplace)}\t{replace}\r\n"
+                        $"{item.Pronounce}\t{item.Word}\t{SpeechToString(item.Speech)}\t{cmnt.Comment}\t{GetAutoReplace(cmnt.AutoReplace)}\t{replace}\r\n"
                         );
                 }
             }
