@@ -23,6 +23,9 @@ namespace AioiLight.DictionaryMate.IME
             // ヘッダー
             sb.Append("!!ATOK_TANGO_TEXT_HEADER_1\r\n");
 
+            // これがないと置換候補を6つ以上登録できない
+            sb.Append("!!読み範囲;(読みの先頭) → (読みの最終)\r\n");
+
             foreach (var item in jsonDic)
             {
                 // 置換候補が6つ以上あれば、複数同じ単語で登録する必要がある
